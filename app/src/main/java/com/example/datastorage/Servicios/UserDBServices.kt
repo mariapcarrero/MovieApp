@@ -10,8 +10,8 @@ import com.example.datastorage.Modelos.User
 class UserDBServices(context: Context) : SQLiteOpenHelper(context, "UserDBService", null, 1), IUserServices
 {
     fun restoreDB(db : SQLiteDatabase?) {
-        val sqlDestroy : String = "DROP TABLE users";
-        db?.execSQL(sqlDestroy)
+       // val sqlDestroy : String = "DROP TABLE users";
+       // db?.execSQL(sqlDestroy)
 
         val sql : String = "CREATE TABLE users(idUser int primarykey," +
                 " name text," +
@@ -23,7 +23,7 @@ class UserDBServices(context: Context) : SQLiteOpenHelper(context, "UserDBServic
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        // restoreDB(db)
+        //restoreDB(db)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int)

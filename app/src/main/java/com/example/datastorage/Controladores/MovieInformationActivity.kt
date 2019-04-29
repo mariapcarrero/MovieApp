@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.ImageView
+import android.widget.RatingBar
 import com.example.datastorage.R
 import com.example.datastorage.Modelos.Movie
 import com.google.gson.Gson
@@ -24,7 +25,10 @@ class MovieInformationActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.nameProfileInfo).text = movie.name
         findViewById<TextView>(R.id.duracion).text = movie.duration.toString()
+        findViewById<TextView>(R.id.year).text = movie.year.toString()
         findViewById<TextView>(R.id.sinopsis).text = movie.synopsis
+        findViewById<TextView>(R.id.director).text = movie.director
+        findViewById<RatingBar>(R.id.ratingBar).rating = movie.score!!.toFloat()
         val img = movie.image
         if (img != null) {
             findViewById<ImageView>(R.id.imageProfileInfo).setImageBitmap(

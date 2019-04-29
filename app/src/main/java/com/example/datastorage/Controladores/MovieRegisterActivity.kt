@@ -89,4 +89,9 @@ class MovieRegisterActivity : AppCompatActivity() {
         imgArr = array
     }
 
+    fun goBack(view : View) {
+        val intent = Intent(this, MoviesListActivity::class.java)
+        startActivity(intent)
+    }
+
 }

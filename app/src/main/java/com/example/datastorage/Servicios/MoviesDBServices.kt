@@ -11,8 +11,8 @@ import com.example.datastorage.Modelos.Movie
 class MoviesDBServices (context: Context) : SQLiteOpenHelper(context, "MoviesDBService", null, 1), IMovieServices
 {
     override fun onCreate(db: SQLiteDatabase?) {
-        // restoreDB(db)
-        val sql : String = "CREATE TABLE movies(idMovie int primarykey," +
+       //  restoreDB(db)
+       /* val sql : String = "CREATE TABLE movies(idMovie int primarykey," +
                 " name text," +
                 " synopsis text," +
                 " duration integer," +
@@ -20,11 +20,11 @@ class MoviesDBServices (context: Context) : SQLiteOpenHelper(context, "MoviesDBS
                 " score float," +
                 " director text," +
                 " image BLOB)"
-        db?.execSQL(sql)
+        db?.execSQL(sql)*/
     }
     fun restoreDB(db : SQLiteDatabase?) {
-        val sqlDestroy : String = "DROP TABLE movies";
-        db?.execSQL(sqlDestroy)
+       // val sqlDestroy : String = "DROP TABLE movies";
+        //db?.execSQL(sqlDestroy)
 
         val sql : String = "CREATE TABLE movies(idMovie int primarykey," +
                 " name text," +

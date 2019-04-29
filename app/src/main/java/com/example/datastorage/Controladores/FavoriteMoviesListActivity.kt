@@ -10,19 +10,20 @@ import android.widget.Toast
 import com.example.datastorage.Adapters.MoviesListAdapter
 import com.example.datastorage.Modelos.Movie
 import com.example.datastorage.R
-import com.example.datastorage.Servicios.MoviesDBServices
+import com.example.datastorage.Servicios.FavoriteMovieDBServices
+//import com.example.datastorage.Servicios.FavoriteMoviesDBServices
 import com.google.gson.Gson
 
 
-class MoviesListActivity : AppCompatActivity()
+class FavoriteMoviesListActivity : AppCompatActivity()
 {
     private lateinit var listView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_movies_list)
+        setContentView(R.layout.activity_favoritemovies_list)
 
-        val listPosts: List<Movie>? = MoviesDBServices(this).consultMovies()
+        val listPosts: List<Movie>? = FavoriteMovieDBServices(this).consultFavoriteMovies(1)
         listView = findViewById<ListView>(R.id.listMovies) as ListView
         val adapter = MoviesListAdapter(this, listPosts)
         listView.adapter = adapter
@@ -42,7 +43,7 @@ class MoviesListActivity : AppCompatActivity()
     }
 
     fun goToFavorites(view : View) {
-        val intent = Intent(this, FavoriteMoviesListActivity::class.java)
+        val intent = Intent(this, MovieRegisterActivity::class.java)
         startActivity(intent)
     }
 }

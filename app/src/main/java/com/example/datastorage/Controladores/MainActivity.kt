@@ -8,10 +8,12 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.datastorage.Modelos.User
 import com.example.datastorage.Modelos.Movie
+import com.example.datastorage.Modelos.MoviexUser
 import com.example.datastorage.R
 import com.example.datastorage.Servicios.LoginServices
 import com.example.datastorage.Servicios.UserDBServices //Código Test
 import com.example.datastorage.Servicios.MoviesDBServices
+import com.example.datastorage.Servicios.FavoriteMovieDBServices
 import com.example.datastorage.Servicios.CheckMovieServices
 
 class MainActivity : AppCompatActivity()
@@ -28,8 +30,10 @@ class MainActivity : AppCompatActivity()
         checkMovieServices= CheckMovieServices(this)
         val user = User(null, "Leo", "leo@gmail.com", 35, "secret", null)
         val movie = Movie(null, "Avengers: Endgame", "Awesome.", 181, 2019, 5.0f, "Anthony Russo, Joe Russo", null)
+        val moviexuser = MoviexUser(null, 1,1)
         MoviesDBServices(this).saveMovie(movie) //Código Test
         UserDBServices(this).saveUser(user) //Código Test
+        FavoriteMovieDBServices(this).saveFavoriteMovie(moviexuser)
     }
 
     fun login(view: View)
@@ -40,7 +44,7 @@ class MainActivity : AppCompatActivity()
 
         if(this.loginServices.verifyUser(user))
         {
-            val intent = Intent(this, UsersListActivity::class.java)
+            val intent = Intent(this, MoviesListActivity::class.java)
             startActivity(intent)
            /* val intent = Intent(this, UsersListActivity::class.java)
             startActivity(intent)*/

@@ -12,7 +12,6 @@ class CheckMovieServices(context: Context) {
         return dbConnection.existsMovie(movie)
     }
     fun saveMovie(movie: Movie, context : AppCompatActivity) {
-        MoviesDBServices(context).onCreate(db = null)
         MoviesDBServices(context).saveMovie(movie)
         /* else {
             MoviesReservedServices(context).saveMovie(movie)
