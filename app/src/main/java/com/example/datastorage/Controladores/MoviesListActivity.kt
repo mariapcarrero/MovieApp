@@ -42,6 +42,7 @@ class MoviesListActivity : AppCompatActivity()
     }
     fun goBackMoviesList(view : View) {
         val intent = Intent(this, MovieRegisterActivity::class.java)
+        intent.putExtra("user", userData)
         startActivity(intent)
     }
 

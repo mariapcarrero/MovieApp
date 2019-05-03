@@ -37,10 +37,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="b7c3d260-93dc-417d-882b-5ff22a142272" object-ref="schemas/second/tables/movies" />
-      <object connection-id="b7c3d260-93dc-417d-882b-5ff22a142272" object-ref="schemas/third/tables/users" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="b7c3d260-93dc-417d-882b-5ff22a142272" />
@@ -121,7 +118,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
-          <connect-automatically value="true" />
+          <connect-automatically value="false" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
           <environment-type value="default" />

@@ -27,14 +27,14 @@ class MovieRegisterActivity : AppCompatActivity() {
     private lateinit var checkMovieServices: CheckMovieServices
     private lateinit var permissionServices: PermissionService
     private lateinit var galleryServiceForMovieRegister: GalleryServiceForMovieRegister
-  //  private lateinit var userData : String
+    private lateinit var userData : String
     private lateinit var imgArr : ByteArray
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_register)
         checkMovieServices= CheckMovieServices(this)
-        //userData = this.intent.getStringExtra("user")
+        userData = this.intent.getStringExtra("user")
         permissionServices = PermissionService(this, PermissionBuilder().addPermission(Manifest.permission.READ_EXTERNAL_STORAGE))
         permissionServices.requestPermissions(this)
 
@@ -81,7 +81,8 @@ class MovieRegisterActivity : AppCompatActivity() {
             Toast.makeText(this, USER_REGISTERED_SUCCESSFULLY,  Toast.LENGTH_SHORT).show()
 
             //val intent = Intent(this, MoviesListActivity::class.java)
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, MoviesListActivity::class.java)
+            intent.putExtra("user", userData)
             startActivity(intent)
         }
     }
@@ -93,7 +94,7 @@ class MovieRegisterActivity : AppCompatActivity() {
     fun goBack(view : View) {
         //val intent = Intent(this, MoviesListActivity::class.java)
         val intent = Intent(this, MoviesListActivity::class.java)
-       // intent.putExtra("user", userData)
+        intent.putExtra("user", userData)
         startActivity(intent)
     }
 

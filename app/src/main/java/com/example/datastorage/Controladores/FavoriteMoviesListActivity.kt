@@ -16,15 +16,17 @@ import com.google.gson.Gson
 
 import com.example.datastorage.Modelos.User
 import com.example.datastorage.Servicios.PermissionService
+import com.example.datastorage.Servicios.UserDBServices
 
 class FavoriteMoviesListActivity : AppCompatActivity()
 {
     private lateinit var listView: ListView
+    private lateinit var data : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favoritemovies_list)
-        val data = this.intent.getStringExtra("user")
+        data = this.intent.getStringExtra("user")
         val user : User = Gson().fromJson(data, User::class.javaObjectType)
         var userId = 1
         if (user.idUser != null) {
@@ -41,18 +43,21 @@ class FavoriteMoviesListActivity : AppCompatActivity()
         listView.setOnItemClickListener { adapterView, view, i, l ->
             val intent = Intent(this, MovieInformationActivity::class.java)
             var jsonUser = Gson().toJson(adapter.getItem(i))
+            intent.putExtra("user", data)
             intent.putExtra("movie", jsonUser)
 
             startActivity(intent)
         }
     }
     fun goBackMoviesList(view : View) {
-        val intent = Intent(this, MovieRegisterActivity::class.java)
+        val intent = Intent(this, MoviesListActivity::class.java)
+        intent.putExtra("user", data)
         startActivity(intent)
     }
 
     fun goToFavorites(view : View) {
         val intent = Intent(this, MovieRegisterActivity::class.java)
+        intent.putExtra("user", data)
         startActivity(intent)
     }
 }

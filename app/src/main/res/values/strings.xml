@@ -17,5 +17,6 @@
     <string name="director">Director</string>
     <string name="volver">Volver</string>
     <string name="crearpelicula">Crear Película</string>
+    <string name="favoritos">Favoritos</string>
     <string name="mostrarpeliculas">Mostrar Películas</string>
 </resources>
