@@ -11,17 +11,30 @@ import com.example.datastorage.Modelos.Movie
 import com.google.gson.Gson
 import android.view.View
 import android.graphics.BitmapFactory
+import android.widget.Toast
+import com.example.datastorage.Modelos.User
+import com.example.datastorage.Servicios.FavoriteMovieDBServices
+import com.example.datastorage.Servicios.PermissionService
 
 class MovieInformationActivity : AppCompatActivity() {
 
     private lateinit var movie : Movie
+    private lateinit var user : User
+    private lateinit var userData : String
+
+    private lateinit var favMovieBDService : FavoriteMovieDBServices
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_information)
 
+        favMovieBDService = FavoriteMovieDBServices(this)
+
         val data = this.intent.getStringExtra("movie")
         movie = Gson().fromJson(data, Movie::class.javaObjectType)
+
+        userData = this.intent.getStringExtra("user")
+        user = Gson().fromJson(userData, User::class.javaObjectType)
 
         findViewById<TextView>(R.id.nameProfileInfo).text = movie.name
         findViewById<TextView>(R.id.duracion).text = movie.duration.toString()
@@ -35,12 +48,17 @@ class MovieInformationActivity : AppCompatActivity() {
                 BitmapFactory.decodeByteArray(img, 0, img.size)
             )
         }
+    }
 
+    fun markFavorite(view : View) {
+        Toast.makeText(this, "func",  Toast.LENGTH_SHORT).show()
 
+        favMovieBDService.markAsFavorite(user, movie)
     }
 
     fun goBack(view : View) {
         val intent = Intent(this, MoviesListActivity::class.java)
+        intent.putExtra("user", userData)
         startActivity(intent)
     }
 }

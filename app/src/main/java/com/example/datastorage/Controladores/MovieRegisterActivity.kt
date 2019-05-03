@@ -27,14 +27,14 @@ class MovieRegisterActivity : AppCompatActivity() {
     private lateinit var checkMovieServices: CheckMovieServices
     private lateinit var permissionServices: PermissionService
     private lateinit var galleryServiceForMovieRegister: GalleryServiceForMovieRegister
-
+  //  private lateinit var userData : String
     private lateinit var imgArr : ByteArray
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_register)
-       checkMovieServices= CheckMovieServices(this)
-
+        checkMovieServices= CheckMovieServices(this)
+        //userData = this.intent.getStringExtra("user")
         permissionServices = PermissionService(this, PermissionBuilder().addPermission(Manifest.permission.READ_EXTERNAL_STORAGE))
         permissionServices.requestPermissions(this)
 
@@ -60,7 +60,7 @@ class MovieRegisterActivity : AppCompatActivity() {
         val year = findViewById<TextView>(R.id.year).text.toString().toInt()
         val score = findViewById<RatingBar>(R.id.ratingBar).rating.toString().toFloat()
         val duration = findViewById<TextView>(R.id.duracion).text.toString().toInt()
-       // val age = findViewById<TextView>(R.id.edad).text.toString().toInt()
+        // val age = findViewById<TextView>(R.id.edad).text.toString().toInt()
 
         val movie = Movie(null, name, synopsis, duration, year, score, director, imgArr)
         /*    val ratingBar = findViewById<RatingBar>(R.id.ratingBar)
@@ -80,7 +80,8 @@ class MovieRegisterActivity : AppCompatActivity() {
             checkMovieServices.saveMovie(movie, this)
             Toast.makeText(this, USER_REGISTERED_SUCCESSFULLY,  Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, MoviesListActivity::class.java)
+            //val intent = Intent(this, MoviesListActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
@@ -90,7 +91,9 @@ class MovieRegisterActivity : AppCompatActivity() {
     }
 
     fun goBack(view : View) {
+        //val intent = Intent(this, MoviesListActivity::class.java)
         val intent = Intent(this, MoviesListActivity::class.java)
+       // intent.putExtra("user", userData)
         startActivity(intent)
     }
 

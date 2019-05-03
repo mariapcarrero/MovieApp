@@ -16,6 +16,10 @@ class UserReservedServices(context: Context) : AppCompatActivity(), IUserService
 
     private var preferencias = context.getSharedPreferences("usuarios", 0)
 
+    override fun getUserByEmail(email: String): User? {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun verifyUser(user: User): Boolean
     {
         var returnValue : Boolean = false

@@ -14,6 +14,8 @@ import com.example.datastorage.Servicios.FavoriteMovieDBServices
 //import com.example.datastorage.Servicios.FavoriteMoviesDBServices
 import com.google.gson.Gson
 
+import com.example.datastorage.Modelos.User
+import com.example.datastorage.Servicios.PermissionService
 
 class FavoriteMoviesListActivity : AppCompatActivity()
 {
@@ -22,8 +24,15 @@ class FavoriteMoviesListActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favoritemovies_list)
+        val data = this.intent.getStringExtra("user")
+        val user : User = Gson().fromJson(data, User::class.javaObjectType)
+        var userId = 1
+        if (user.idUser != null) {
+            userId = user.idUser
+        }
 
-        val listPosts: List<Movie>? = FavoriteMovieDBServices(this).consultFavoriteMovies(1)
+        val listPosts: List<Movie>? = FavoriteMovieDBServices(this).consultFavoriteMovies(userId)
+
         listView = findViewById<ListView>(R.id.listMovies) as ListView
         val adapter = MoviesListAdapter(this, listPosts)
         listView.adapter = adapter

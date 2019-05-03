@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Controladores.UserInformationActivity"
+        tools:context=".Controladores.MovieInformationActivity"
         android:background="@color/colorBackGround">
 
 
@@ -102,4 +102,9 @@
             android:textColorHint="@color/colorPrimary"
             android:background="@drawable/rounder_corner_button"
             android:ems="10" app:layout_constraintHorizontal_bias="0.497"/>
+    <Button
+            android:text="Favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" tools:layout_editor_absoluteY="4dp"
+            tools:layout_editor_absoluteX="13dp" android:id="@+id/button" android:onClick="markFavorite"/>
 </android.support.constraint.ConstraintLayout>

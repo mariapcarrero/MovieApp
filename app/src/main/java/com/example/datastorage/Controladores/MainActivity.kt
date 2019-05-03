@@ -15,6 +15,7 @@ import com.example.datastorage.Servicios.UserDBServices //Código Test
 import com.example.datastorage.Servicios.MoviesDBServices
 import com.example.datastorage.Servicios.FavoriteMovieDBServices
 import com.example.datastorage.Servicios.CheckMovieServices
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity()
 {
@@ -31,9 +32,11 @@ class MainActivity : AppCompatActivity()
         val user = User(null, "Leo", "leo@gmail.com", 35, "secret", null)
         val movie = Movie(null, "Avengers: Endgame", "Awesome.", 181, 2019, 5.0f, "Anthony Russo, Joe Russo", null)
         val moviexuser = MoviexUser(null, 1,1)
+        val moviexuser1 = MoviexUser(null, 2,2)
         MoviesDBServices(this).saveMovie(movie) //Código Test
         UserDBServices(this).saveUser(user) //Código Test
         FavoriteMovieDBServices(this).saveFavoriteMovie(moviexuser)
+        FavoriteMovieDBServices(this).saveFavoriteMovie(moviexuser1)
     }
 
     fun login(view: View)
@@ -45,9 +48,11 @@ class MainActivity : AppCompatActivity()
         if(this.loginServices.verifyUser(user))
         {
             val intent = Intent(this, MoviesListActivity::class.java)
+            var jsonUser = Gson().toJson(loginServices.getUserByEmail(email.text.toString()))
+            intent.putExtra("user", jsonUser)
             startActivity(intent)
-           /* val intent = Intent(this, UsersListActivity::class.java)
-            startActivity(intent)*/
+            /* val intent = Intent(this, UsersListActivity::class.java)
+             startActivity(intent)*/
         }
         else
         {
@@ -57,7 +62,7 @@ class MainActivity : AppCompatActivity()
 
     fun register(view: View)
     {
-            val intent = Intent(this, RegisterActivity::class.java)
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 

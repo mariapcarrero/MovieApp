@@ -25,6 +25,10 @@ class LoginServices(context: Context)
         return result
     }
 
+    fun getUserByEmail(email : String) : User? {
+        return dbConnection.getUserByEmail(email)
+    }
+
     fun existsUser(user : User) : Boolean {
         return sharedConnection.existsUser(user) || dbConnection.existsUser(user)
     }

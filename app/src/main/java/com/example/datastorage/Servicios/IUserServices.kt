@@ -8,4 +8,5 @@ interface IUserServices
     fun saveUser(user: User)
     fun consultUsers() : List<User>?
     fun existsUser(user : User) : Boolean
+    fun getUserByEmail(email : String) : User?
 }
