@@ -7,4 +7,6 @@
     <color name="colorText">#FFFFFF</color>
     <color name="colorTextHint">#A39C9C</color>
     <color name="colorButton">#990F9BF0</color>
+    <color name="colorSoft">#c2f0f0</color>
+    <color name="colorStrong">#ffcc00</color>
 </resources>

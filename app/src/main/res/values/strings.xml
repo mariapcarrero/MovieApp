@@ -18,5 +18,7 @@
     <string name="volver">Volver</string>
     <string name="crearpelicula">Crear Película</string>
     <string name="favoritos">Favoritos</string>
+    <string name="agregarfav">Agregar a Favoritos</string>
+    <string name="eliminarfav">Eliminar de Favoritos</string>
     <string name="mostrarpeliculas">Mostrar Películas</string>
 </resources>

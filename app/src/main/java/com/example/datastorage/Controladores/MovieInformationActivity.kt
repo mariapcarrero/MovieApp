@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.ImageView
+import android.widget.Button
 import android.widget.RatingBar
 import com.example.datastorage.R
 import com.example.datastorage.Modelos.Movie
@@ -15,6 +16,14 @@ import android.widget.Toast
 import com.example.datastorage.Modelos.User
 import com.example.datastorage.Servicios.FavoriteMovieDBServices
 import com.example.datastorage.Servicios.PermissionService
+import com.like.LikeButton
+import com.like.OnLikeListener
+
+
+
+
+
+
 
 class MovieInformationActivity : AppCompatActivity() {
 
@@ -42,6 +51,31 @@ class MovieInformationActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.sinopsis).text = movie.synopsis
         findViewById<TextView>(R.id.director).text = movie.director
         findViewById<RatingBar>(R.id.ratingBar).rating = movie.score!!.toFloat()
+        var clicked : Int = 1;
+
+        val favoriteButton = findViewById<Button>(R.id.button)
+        var alreadyExists: Boolean?
+        alreadyExists = favMovieBDService.checkFavoriteMovie(user.idUser,movie.idMovie)
+        //Toast.makeText(this, alreadyExists.toString(),  Toast.LENGTH_SHORT).show()
+        if (alreadyExists){
+            favoriteButton.text="Eliminar de Favoritos"
+        }
+        else {
+            favoriteButton.text="Agregar a Favoritos"
+        }
+        /*
+        favoriteButton.setOnClickListener{
+
+            if (clicked==0){
+                favoriteButton.text="Eliminar de Favoritos"
+                clicked=1
+            }
+            else {
+                favoriteButton.text="Agregar a Favoritos"
+                clicked=0
+            }
+        }*/
+
         val img = movie.image
         if (img != null) {
             findViewById<ImageView>(R.id.imageProfileInfo).setImageBitmap(
@@ -61,4 +95,6 @@ class MovieInformationActivity : AppCompatActivity() {
         intent.putExtra("user", userData)
         startActivity(intent)
     }
+
+
 }

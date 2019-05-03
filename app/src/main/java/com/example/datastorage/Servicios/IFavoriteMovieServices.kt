@@ -9,6 +9,7 @@ interface IFavoriteMovieServices {
     fun saveFavoriteMovie(movie: MoviexUser)
     fun consultFavoriteMovies(id: Int) : List<Movie>?
     fun markAsFavorite(user : User, movie : Movie)
+    fun checkFavoriteMovie(idUser : Int?, idMovie : Int?): Boolean
     //fun existsMovie(movie : MoviexUser) : Boolean
 }
 

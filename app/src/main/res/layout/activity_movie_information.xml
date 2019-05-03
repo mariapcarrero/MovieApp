@@ -103,8 +103,14 @@
             android:background="@drawable/rounder_corner_button"
             android:ems="10" app:layout_constraintHorizontal_bias="0.497"/>
     <Button
-            android:text="Favorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="4dp"
-            tools:layout_editor_absoluteX="13dp" android:id="@+id/button" android:onClick="markFavorite"/>
+            android:text="@string/agregarfav"
+            android:layout_width="146dp"
+            android:layout_height="42dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="@color/colorText"
+            android:textColorHint="@color/colorPrimary"
+            android:background="@drawable/rounder_corner_button"
+            android:ems="10" tools:layout_editor_absoluteY="16dp"
+            android:id="@+id/button" android:onClick="markFavorite" app:layout_constraintHorizontal_bias="0.06"/>
 </android.support.constraint.ConstraintLayout>
