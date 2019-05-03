@@ -31,6 +31,12 @@ class FavoriteMovieDBServices(context: Context) : SQLiteOpenHelper(context, "Mov
         val movie : MoviexUser = MoviexUser(null, movie.idMovie, user.idUser)
         saveFavoriteMovie(movie)
     }
+
+    override fun unmarkAsFavorite(user: User, movie: Movie) {
+        val sql : String = "DELETE FROM moviexuser WHERE idUser='${user.idUser}' AND idMovie='${movie.idMovie}'"
+        this.writableDatabase.execSQL(sql)
+    }
+
     override fun checkFavoriteMovie(idUser: Int?, idMovie: Int?): Boolean{
 
         val sql : String = "SELECT idMoviexUser FROM moviexuser WHERE idUser ='${idUser}' and idMovie = '${idMovie}'"

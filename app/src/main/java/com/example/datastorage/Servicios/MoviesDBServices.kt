@@ -26,7 +26,7 @@ class MoviesDBServices (context: Context) : SQLiteOpenHelper(context, "MoviesDBS
        // val sqlDestroy : String = "DROP TABLE movies";
         //db?.execSQL(sqlDestroy)
 
-        val sql : String = "CREATE TABLE movies(idMovie integer primary key autoincrement," +
+        val sql : String = "CREATE TABLE IF NOT EXISTS movies(idMovie integer primary key autoincrement," +
                 " name text," +
                 " synopsis text," +
                 " duration integer," +
@@ -84,7 +84,8 @@ class MoviesDBServices (context: Context) : SQLiteOpenHelper(context, "MoviesDBS
         while(!result.isAfterLast)
         {
 
-            val name = result.getString(0)
+
+            val name = result.getString(1)
 
             var movie : Movie = Movie(
                 result.getInt(0),
@@ -117,6 +118,7 @@ class MoviesDBServices (context: Context) : SQLiteOpenHelper(context, "MoviesDBS
     private fun executeModification(movie: ContentValues)
     {
         val bd = this.writableDatabase
+        restoreDB(bd)
         bd.insert("movies", null, movie)
         bd.close()
     }

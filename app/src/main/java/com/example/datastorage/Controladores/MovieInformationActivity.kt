@@ -30,6 +30,7 @@ class MovieInformationActivity : AppCompatActivity() {
     private lateinit var movie : Movie
     private lateinit var user : User
     private lateinit var userData : String
+    private var movieIsFavorite : Boolean = false
 
     private lateinit var favMovieBDService : FavoriteMovieDBServices
 
@@ -56,26 +57,13 @@ class MovieInformationActivity : AppCompatActivity() {
         val favoriteButton = findViewById<Button>(R.id.button)
         var alreadyExists: Boolean?
         alreadyExists = favMovieBDService.checkFavoriteMovie(user.idUser,movie.idMovie)
-        //Toast.makeText(this, alreadyExists.toString(),  Toast.LENGTH_SHORT).show()
+        movieIsFavorite = alreadyExists
         if (alreadyExists){
             favoriteButton.text="Eliminar de Favoritos"
         }
         else {
             favoriteButton.text="Agregar a Favoritos"
         }
-        /*
-        favoriteButton.setOnClickListener{
-
-            if (clicked==0){
-                favoriteButton.text="Eliminar de Favoritos"
-                clicked=1
-            }
-            else {
-                favoriteButton.text="Agregar a Favoritos"
-                clicked=0
-            }
-        }*/
-
         val img = movie.image
         if (img != null) {
             findViewById<ImageView>(R.id.imageProfileInfo).setImageBitmap(
@@ -85,9 +73,14 @@ class MovieInformationActivity : AppCompatActivity() {
     }
 
     fun markFavorite(view : View) {
-        Toast.makeText(this, "func",  Toast.LENGTH_SHORT).show()
-
-        favMovieBDService.markAsFavorite(user, movie)
+        val favoriteButton = findViewById<Button>(R.id.button)
+        if (!movieIsFavorite) {
+            favMovieBDService.markAsFavorite(user, movie)
+            favoriteButton.text = "Eliminar de Favoritos"
+        } else {
+            favMovieBDService.unmarkAsFavorite(user, movie)
+            favoriteButton.text = "Agregar a Favoritos"
+        }
     }
 
     fun goBack(view : View) {

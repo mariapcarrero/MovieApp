@@ -29,14 +29,14 @@ class MainActivity : AppCompatActivity()
         setContentView(R.layout.activity_main)
         loginServices= LoginServices(this)
         checkMovieServices= CheckMovieServices(this)
-      /*  val user = User(null, "Leo", "leo@gmail.com", 35, "secret", null)
+        val user = User(null, "Leo", "leo@gmail.com", 35, "secret", null)
         val movie = Movie(null, "Avengers: Endgame", "Awesome.", 181, 2019, 5.0f, "Anthony Russo, Joe Russo", null)
         val moviexuser = MoviexUser(null, 1,1)
         val moviexuser1 = MoviexUser(null, 2,2)
         MoviesDBServices(this).saveMovie(movie) //Código Test
         UserDBServices(this).saveUser(user) //Código Test
         FavoriteMovieDBServices(this).saveFavoriteMovie(moviexuser)
-        FavoriteMovieDBServices(this).saveFavoriteMovie(moviexuser1)*/
+        FavoriteMovieDBServices(this).saveFavoriteMovie(moviexuser1)
 
     }
 
